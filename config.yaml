@@ -1,0 +1,41 @@
+load_yaml: True
+
+# pretraining setting
+continue_train: False
+ckpt_name: 'epoch049.pth.tar'   # 'model_best.pth.tar'
+
+# dataset
+dataset_name: 'ADNI1GO234'
+data_type: 'pair'   # 'single'
+img_file_name: 'ADNI_longitudinal_img_aug.h5'
+noimg_file_name: 'ADNI_longitudinal_noimg.h5'
+subj_list_postfix: 'NC_AD_pMCI_sMCI_NCany'    # 'NC_AD', 'pMCI_sMCI'
+
+# training setting
+epochs: 50
+batch_size: 64
+shuffle: False
+lr: 0.01
+aug: False
+
+# model setting
+# latent_size: 1024
+num_neighbours: 5
+dims: [68, 128, 64, 32, 64, 128, 68]
+agg_method: 'gaussian'
+postpone_proto: 20
+
+model_name: 'LSP'       # longitudinal social pooling   # 'AE', 'VAE', 'LSSL'
+lambda_recon: 0.00008  # 0.00015
+lambda_dir: 1.
+lambda_dis: 0.
+lambda_cls: 0.
+lambda_kl: 0.
+lambda_nce: 0.
+lambda_proto: 0.
+
+
+# LSP-tabular
+
+# ckpt_label: '2024_12_13_16_34'             #!Fahad our_label w0.00015 1 loss0.09294 0.20046 lr0.01 leaky_relu [68, 128, 64, 32, 64, 128, 68] 400ep shuffle
+ckpt_label: '2025_1_14_13_58'             #!Fahad our_label w0.00015 1 loss0.09294 0.20046 lr0.01 leaky_relu [68, 128, 64, 32, 64, 128, 68] 400ep shuffle

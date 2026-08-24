@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <title>Global SUVR Window Explorer</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <main class="layout">
+        <div class="left-column">
+          <section class="panel controls-panel">
+            <div class="control-toolbar">
+              <label class="control-field control-field--dataset">
+                <span>Dataset</span>
+                <select id="dataset-select"></select>
+              </label>
+
+              <label class="control-field control-field--metric">
+                <span>Window Metric</span>
+                <select id="window-metric-select"></select>
+              </label>
+            </div>
+
+            <p class="dataset-description" id="dataset-description"></p>
+
+            <div class="window-metrics">
+              <article class="metric-chip">
+                <span>Window Min</span>
+                <strong id="window-min-value"></strong>
+              </article>
+              <article class="metric-chip">
+                <span>Window Max</span>
+                <strong id="window-max-value"></strong>
+              </article>
+              <article class="metric-chip">
+                <span>Center</span>
+                <strong id="window-center-value"></strong>
+              </article>
+              <article class="metric-chip">
+                <span>Width</span>
+                <strong id="window-width-value"></strong>
+              </article>
+            </div>
+
+            <div class="range-stack">
+              <div class="range-head">
+                <span>Drag either handle, or drag the bar between them</span>
+                <span id="window-span-label"></span>
+              </div>
+              <div class="dual-range" id="dual-range">
+                <div class="dual-range__track"></div>
+                <div class="dual-range__active" id="active-range"></div>
+                <button
+                  class="dual-range__drag"
+                  id="range-drag"
+                  type="button"
+                  aria-label="Drag the full selected window"
+                ></button>
+                <input id="window-min-slider" type="range" />
+                <input id="window-max-slider" type="range" />
+              </div>
+            </div>
+
+            <div class="summary-grid">
+              <article class="summary-card">
+                <p class="eyebrow">Points In Window</p>
+                <strong id="points-count"></strong>
+                <p id="points-share"></p>
+              </article>
+              <article class="summary-card">
+                <p class="eyebrow">Full Dataset</p>
+                <strong id="dataset-size"></strong>
+                <p id="dataset-note"></p>
+              </article>
+              <article class="summary-card">
+                <p class="eyebrow">Branch Mix</p>
+                <div class="pill-grid" id="branch-counts"></div>
+              </article>
+              <article class="summary-card">
+                <p class="eyebrow">Diagnosis Mix</p>
+                <div class="pill-grid" id="diagnosis-counts"></div>
+              </article>
+            </div>
+          </section>
+
+          <section class="panel table-panel">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Filtered Records</p>
+                <h2>Points In Window</h2>
+              </div>
+              <p class="panel-copy" id="table-summary"></p>
+            </div>
+
+            <div class="selection-card is-empty" id="selection-card">
+              Click a colored point or a table row to inspect one record.
+            </div>
+
+            <div class="table-scroll">
+              <table>
+                <thead>
+                  <tr>
+                    <th>RID</th>
+                    <th>Dx</th>
+                    <th>Branch</th>
+                    <th>Cluster</th>
+                    <th id="window-value-column-label">Global SUVR</th>
+                    <th>Embedding 1</th>
+                    <th>Embedding 2</th>
+                  </tr>
+                </thead>
+                <tbody id="points-table-body"></tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+
+        <div class="right-column">
+          <section class="panel plot-panel">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Embedding View</p>
+                <h2>Branch Trajectory Plot</h2>
+              </div>
+              <div class="legend" id="plot-legend"></div>
+            </div>
+            <div class="plot-frame">
+              <svg
+                id="trajectory-plot"
+                viewBox="0 0 820 560"
+                preserveAspectRatio="xMidYMid meet"
+                role="img"
+              ></svg>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <script src="./data.js"></script>
+    <script src="./app.js"></script>
+  </body>
+  </html>

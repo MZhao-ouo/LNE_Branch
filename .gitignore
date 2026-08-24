@@ -1,0 +1,48 @@
+# Local and protected data
+*.csv
+*.tsv
+*.h5
+*.hdf5
+*.nii
+*.nii.gz
+data/*/raw/*
+!data/*/raw/*.ipynb
+data/*/filtered*/
+data/*/splits/
+ADNI_analysis/
+
+# Generated models and results
+ckpt/
+results/
+*.npy
+*.npz
+*.pkl
+*.joblib
+*.pt
+*.pth
+*.pth.tar
+website/**/data.js
+
+# Archived, superseded, and scratch analyses
+analysis/archive/
+analysis/old_pseudotime/
+Result_Analysis.ipynb
+Result_Analysis_A4.ipynb
+Result_Analysis_NACC.ipynb
+calc_pseudotime.ipynb
+calc_pseudotime_spline.ipynb
+data/convert_to_test.ipynb
+data/**/Spaghetti.ipynb
+
+# Python and notebook caches
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local editor and operating-system files
+.vscode/
+.idea/
+.DS_Store
